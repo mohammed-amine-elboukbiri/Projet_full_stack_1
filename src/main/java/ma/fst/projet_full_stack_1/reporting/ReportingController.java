@@ -24,7 +24,7 @@ public class ReportingController {
         this.projetRepository = projetRepository;
     }
 
-    // phases terminées mais non facturées
+
     @GetMapping("/phases/terminees-non-facturees")
     public List<Phase> getPhasesTermineesNonFacturees() {
 
@@ -32,7 +32,7 @@ public class ReportingController {
                 .findByEtatRealisationTrueAndEtatFacturationFalse();
     }
 
-    // phases facturées mais non payées
+
     @GetMapping("/phases/facturees-non-payees")
     public List<Phase> getPhasesFactureesNonPayees() {
 
@@ -40,7 +40,7 @@ public class ReportingController {
                 .findByEtatFacturationTrueAndEtatPaiementFalse();
     }
 
-    // phases payées
+
     @GetMapping("/phases/payees")
     public List<Phase> getPhasesPayees() {
 
@@ -48,7 +48,7 @@ public class ReportingController {
                 .findByEtatPaiementTrue();
     }
 
-    // projets en cours
+
     @GetMapping("/projets/en-cours")
     public List<Projet> getProjetsEnCours() {
 
@@ -56,7 +56,7 @@ public class ReportingController {
                 .findByDateFinIsNull();
     }
 
-    // projets clôturés
+
     @GetMapping("/projets/clotures")
     public List<Projet> getProjetsClotures() {
 
