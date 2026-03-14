@@ -4,5 +4,7 @@ import ma.fst.projet_full_stack_1.entities.Affectation;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface AffectationRepository extends JpaRepository<Affectation, Long> {
+import ma.fst.projet_full_stack_1.entities.AffectationId;
+
+public interface AffectationRepository extends JpaRepository<Affectation, AffectationId> {
 }

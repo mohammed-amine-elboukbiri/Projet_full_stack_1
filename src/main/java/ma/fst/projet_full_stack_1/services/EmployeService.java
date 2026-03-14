@@ -12,15 +12,18 @@ import java.util.List;
 public class EmployeService {
 
     private final EmployeRepository employeRepository;
+    private final org.springframework.security.crypto.password.PasswordEncoder passwordEncoder;
 
-    public EmployeService(EmployeRepository employeRepository) {
+    public EmployeService(EmployeRepository employeRepository,
+                          org.springframework.security.crypto.password.PasswordEncoder passwordEncoder) {
         this.employeRepository = employeRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public Employe createEmploye(Employe employe) {
+        employe.setPassword(passwordEncoder.encode(employe.getPassword()));
         return employeRepository.save(employe);
     }
-
     public List<Employe> getAllEmployes() {
         return employeRepository.findAll();
     }
@@ -34,13 +37,17 @@ public class EmployeService {
 
         Employe existing = getEmployeById(id);
 
+        if (employe.getPassword() != null && !employe.getPassword().isBlank()) {
+            existing.setPassword(passwordEncoder.encode(employe.getPassword()));
+        }
+
         existing.setMatricule(employe.getMatricule());
         existing.setNom(employe.getNom());
         existing.setPrenom(employe.getPrenom());
         existing.setTelephone(employe.getTelephone());
         existing.setEmail(employe.getEmail());
         existing.setLogin(employe.getLogin());
-        existing.setPassword(employe.getPassword());
+        existing.setProfil(employe.getProfil());
 
         return employeRepository.save(existing);
     }

@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import javax.swing.text.Document;
+import ma.fst.projet_full_stack_1.entities.Document;
 import java.time.LocalDate;
 import java.util.List;
 

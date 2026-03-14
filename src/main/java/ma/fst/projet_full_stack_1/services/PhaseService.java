@@ -40,6 +40,9 @@ public class PhaseService {
         existing.setDateDebut(phase.getDateDebut());
         existing.setDateFin(phase.getDateFin());
         existing.setMontant(phase.getMontant());
+        existing.setEtatRealisation(phase.isEtatRealisation());
+        existing.setEtatFacturation(phase.isEtatFacturation());
+        existing.setEtatPaiement(phase.isEtatPaiement());
 
         return phaseRepository.save(existing);
     }

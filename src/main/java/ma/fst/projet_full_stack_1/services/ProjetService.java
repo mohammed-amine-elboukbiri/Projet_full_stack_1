@@ -40,6 +40,8 @@ public class ProjetService {
         existing.setDateDebut(projet.getDateDebut());
         existing.setDateFin(projet.getDateFin());
         existing.setMontant(projet.getMontant());
+        existing.setOrganisme(projet.getOrganisme());
+        existing.setChefProjet(projet.getChefProjet());
 
         return projetRepository.save(existing);
     }
